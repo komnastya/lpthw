@@ -9,7 +9,7 @@ print (f"Array has {len(stuff)} items\n")
 
 more_stuff = ["Day", "Night", "Song", "Frisbee", "Corn", "Banana", "Girl", "Boy"]
 
-for asdfg in stuff:
+for ignore in stuff:
     next_one = more_stuff.pop()
     stuff.append(next_one)
     if len(stuff) == 11:
