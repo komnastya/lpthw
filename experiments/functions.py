@@ -1,3 +1,7 @@
+#- Indexes vs elements.
+#- Loops over elements.
+#- Loops over indexes.
+
 # Returns the maximal element from the given list.
 # Example: [1,2,3,4,-1,-2] -> 4
 def max_value(list):
@@ -37,7 +41,7 @@ def max_index(list):
 
 # Returns the minimal element from the given list.
 # Example: [1,2,3,4,-1,-2] -> -2
-def min_value(list):
+def min_value_1(list):
     if len(list) == 0:
         return None
     minimal = list[0]
@@ -46,6 +50,15 @@ def min_value(list):
             minimal = x
     return minimal
 
+def min_value_2(list):
+    if len(list) == 0:
+        return None
+    minimal = list[0]
+    for i in range (len(list)):
+        x = list[i]
+        if x < minimal:
+            minimal = x
+    return minimal
 
 # Returns index of the minimal element from the given list.
 # Example: [1,2,3,4,-1,-2] -> 5
@@ -167,9 +180,9 @@ def print_odd_while(list):
         i = i + 2
 
 
-print('Maximal value is', max_value([1, 2, 3, 4, -1, -2]))
+print('Maximal value is', max_value_1([1, 2, 3, 4, -1, -2]))
 print('Maximal index is', max_index([1, 2, 3, 4, -1, -2]))
-print('Minimal value is', min_value([1, 2, 3, 4, -1, -2]))
+print('Minimal value is', min_value_1([1, 2, 3, 4, -1, -2]))
 print('Maximal index is', min_index([1, 2, 3, 4, -1, -2]))
 print('Is the list sorted? It is ', is_sorted([1, 2, 3, 4]))
 print('Is the list sorted? It is ', is_sorted([4, 3, 2, 1]))
