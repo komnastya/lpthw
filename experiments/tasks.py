@@ -47,7 +47,22 @@ def zig_zag(max):
       output.append(value)
   return output
 
-print(zig_zag(10))
+print('First zig_zag is', zig_zag(10))
+
+
+# Write function zig_zag as follows
+
+# Returns a list of numbers as follows:
+# [1, -1, 2, -2, 3, -3, ..., max]
+
+def zig_zag_2 (max):
+  output = []
+  for x in range (1, max):
+    output.append(x)
+    output.append(-x)
+  return output
+
+print ('Second zig_zag is', zig_zag_2(5))
 
 
 # Write a function which combines two lists as follows:
@@ -108,4 +123,4 @@ def reverse(list):
 
 my_list = [1,2,3,4,5]
 reverse (my_list)
-print (my_list)
+print ('Reversed 1,2,3,4,5 is', my_list)
