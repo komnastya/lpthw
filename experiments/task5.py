@@ -1,9 +1,7 @@
 #LISTS
 
-# - Write a function which tests whether lists are equal
-#  i.e. each list_a[i] == list_b[i]:
+# Test whether the lists are equal.
 
-# Tests whether the given matrix is square.
 # Example: [], [] -> True
 # Example: [1,2], [1,2] -> True
 # Example: [[1,2], [2,1] -> False
@@ -17,19 +15,12 @@ def equal (a, b):
       return False
   return True
 
-print('eq', equal([], []), 'True')
-print('eq', equal([1,2], [1,2]), 'True')
-print('eq', equal([1,2], [1,3]), 'False')
 
+# Take a list of lists and return a flat list containg all the same elements from the nested lists:
 
-#Write a function which takes a list of lists and returns a flat list as follows:
-
-# Takes a list of lists and returns a flat list containg all the same
-# elements from the nested lists:
 # Example 1: [] -> []
 # Example 2: [[1,2,3],[4,5,6]] -> [1,2,3,4,5,6]
 # Example 3: [[1],[2],[3],[4,5],[6]] -> [1,2,3,4,5,6]
-# Not a valid input: [[[1]]]
 
 def flat(list_of_lists):
   output = []
@@ -45,14 +36,8 @@ def flat_2(list_of_lists):
     output = output + l
   return output
 
-print (flat([[1, 2], [3, 4, 5, 6], [8, 9]]))
-print (flat_2([[1, 2], [3, 4, 5, 6], [8, 9]]))
 
-
-print ('Flat [1,2,[3,4],[5],6,[7,8,9]] is', flat([[1,2],[3],[4],[5],[6,7,8,9]]) )
-
-
-#Write a function which splits a list into sublists of a fixed size:
+#Split a list into sublists of a fixed size:
 
 # Example 1: split([1,2,3], 1) -> [[1],[2],[3]]
 # Example 2: split([1,2,3], 2) -> [[1,2],[3]]
@@ -67,12 +52,8 @@ def split(list, max_size):
     output.append(list[i:i+max_size])
   return output
 
-print ('[[1,2,3],[4,5,6],[7,8,9]] is', split([1,2,3,4,5,6,7,8,9,10], 3))
 
-
-#Write a function which deletes repeated elements from a list:
-
-# Deletes repeated elements from the given list.
+# Delete repeated elements from the given list.
 # Returns a new list.
 # Example [1,2,3,4,5] -> [1,2,3,4,5]
 # Example [1,1,1] -> [1]
@@ -98,12 +79,3 @@ def delete_repeated_2(list):
       output.append(list[i])
     i = i + 1
   return output
-
-print (delete_repeated([1,2,3,3,3,4,5,5,5]))
-print ("--------------")
-print (delete_repeated_2([]))
-print (delete_repeated_2([1]))
-print (delete_repeated_2([1,1,1]))
-print (delete_repeated_2([1,2,3]))
-print (delete_repeated_2([1,1,1,2,2,2,3,3,3]))
-print (delete_repeated_2([1,2,3,3,3,4,5,5,5]))
