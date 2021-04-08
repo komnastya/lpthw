@@ -15,9 +15,3 @@ def is_sorted(list):
     if list[x] > list[x + 1]:
       return False
   return True
-
-print(is_sorted([]))
-print(is_sorted([1]))
-print(is_sorted([2, 1]))
-print(is_sorted([0, 5, 7, 8, 6, 3, 4, 1, 9, 2]))
-print(is_sorted([1,2,3,4,5,6,7]))
