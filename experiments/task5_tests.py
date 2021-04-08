@@ -4,11 +4,11 @@ from task5 import equal, flat, flat_2, split, delete_repeated, delete_repeated_2
 class TestTask5(unittest.TestCase):
 
     def test_equal(self):
-        self.assertEqual(equal([],[]), True)
-        self.assertEqual(equal([1],[1]), True)
-        self.assertEqual(equal([1,2],[1,2]), True)
-        self.assertEqual(equal([1,2,3],[1,2]), False)
-        self.assertEqual(equal([1,2],[2,1]), False )
+        self.assertTrue(equal([],[]))
+        self.assertTrue(equal([1],[1]))
+        self.assertTrue(equal([1,2],[1,2]))
+        self.assertFalse(equal([1,2,3],[1,2]))
+        self.assertFalse(equal([1,2],[2,1]))
 
     def test_flat(self):
         self.assertEqual(flat([]),[])
