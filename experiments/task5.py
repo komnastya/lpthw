@@ -66,7 +66,7 @@ def delete_repeated(list):
       list[i:i+1] = []
     else:
       i = i + 1
-  return list
+
 
 def delete_repeated_2(list):
   output = []
