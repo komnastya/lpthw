@@ -15,7 +15,6 @@ def delete_large(list, max):
             output.append(x)
     return output
 
-print('New list', delete_large([1, 2, 3, 4, 5, 6, 7, 8, 9], 3))
 
 #This function change the list, and returns modified list, but does it slowly
 
@@ -27,10 +26,7 @@ def delete_large_slow(list, max):
         else:
             i = i + 1
 
-nums = [10, 1, 11, 12, 2, 3, 4, 5, 13, 14, 15]
-delete_large_slow(nums, 5)
-print('Less than 10 -->', nums)
-
+# reverse example
 
 def delete_small(list, min):
     i = 0
@@ -39,12 +35,6 @@ def delete_small(list, min):
             del list[i]
         else:
             i = i + 1
-
-
-nums = [10, 1, 11, 12, 2, 3, 4, 5, 13, 14, 15]
-delete_small(nums, 10)
-print('More than 10 -->', nums)
-
 
 def delete_large_fast(list, max):
     r = 0
@@ -56,10 +46,6 @@ def delete_large_fast(list, max):
             list[w] = value
             w = w + 1
     del list[w:]
-
-nums = [10, 1, 11, 12, 2, 3, 4, 5, 13, 14, 15]
-delete_large_fast(nums, 5)
-print('Less than 5 (fast) -->', nums)
 
 
 # Delete_large_fast function explanation -> -> ->
