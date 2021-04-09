@@ -1,3 +1,5 @@
+# THEORY with examples
+
 def numerate (list):
   for index in range (len(list)):
     value = list[index]

@@ -1,3 +1,5 @@
+#Theory with examples
+
 fruits = ['apple', 'pear', 'orange', 'banana', 'grapes', 'apricon']
 #	reverse list
 print (fruits[::-1])

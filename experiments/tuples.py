@@ -1,3 +1,5 @@
+#Theory with examples
+
 # Accessing tuple elements using slicing
 my_tuple = ('n','a','s','t','a','s','s','i','a')
 
