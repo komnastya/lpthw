@@ -1,43 +1,22 @@
-# Numbers vs. sequences
-
-# Fibonacci sequence
-
-# Write a function that returns a fibonacci list to max number as follows:
-# 0,1,1,2,3,5,8,13,...,max
-
-def fibonacci (max):
-  a = 0
-  b = 1
-  print (a)
-  print (b)
-  while True:
-    c = a + b
-    if c > max:
-      break
-    print (c)
-    a = b
-    b = c
-
-fibonacci (35)
-
-
-# Write function fizz_buzz which works as follows:
-
 # For every number in range 1..100:
 # a) If the number is divisible by both 3 and 5, print “fizz-buzz”
 # b) Otherwise If the number is divisible by 3, print “fizz”
 # c) Otherwise If the number is divisible by 5, print “buzz”
 # d) Otherwise print the number.
 def fizz_buzz(max):
+    if max <= 0:
+        return False
+    output = []
     for x in range(1, max + 1):
         if x % 15 == 0:
-            print('fizz_buzz', x)
+            output.append((x, 'fizz buzz'))
         elif x % 3 == 0:
-            print('fizz', x)
+            output.append((x,'fizz'))
         elif x % 5 == 0:
-            print('buzz', x)
+            output.append((x,'buzz'))
         else:
-            print(x)
+            output.append(x)
+    return output
 
 
 def fizz_buzz_2(max):
