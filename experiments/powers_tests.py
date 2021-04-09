@@ -8,6 +8,7 @@ class TestShift(unittest.TestCase):
         self.assertEqual(powers_of_two(1), [1])
         self.assertEqual(powers_of_two(2), [1,2])
         self.assertEqual(powers_of_two(5), [1,2,4])
+        self.assertEqual(powers_of_two(8), [1,2,4,8])
         self.assertEqual(powers_of_two(-1), [])
 
     def test_powers_of_three(self):
