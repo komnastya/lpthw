@@ -15,17 +15,6 @@ def starts_with(list, prefix):
       return False
   return True
 
-print ('\n ---> Starts with')
-
-print (starts_with([1,2,3], []), "is True")
-print (starts_with([1,2,3], [1]), "is True")
-print (starts_with([1,2,3], [1,2]), "is True")
-print (starts_with([1,2,3], [1,2,3]), "is True")
-print (starts_with([1,2,3], [2]), "is False")
-print (starts_with([1,2,3], [1,2,3,4]), "is False")
-
-
-
 # Write a function which tests if the given list ends with the given suffix:
 # Tests whether the given list ends with the given suffix.
 # Example: ends_with([1,2,3], []) -> True
@@ -41,23 +30,5 @@ def ends_with(list, suffix):
   a = len(list) - len(suffix)
   for i in range (len(suffix)):
     if list[i + a] != suffix[i]:
-      return False
-  return True
-
-
-print ('\n ---> Ends with')
-
-print ('True is', ends_with([1,2,3], []))
-print ('True is', ends_with([1,2,3], [3]))
-print ('True is', ends_with([1,2,3], [2,3]))
-print ('True is', ends_with([1,2,3], [1,2,3]))
-print ('False is', ends_with([1,2,3], [2]))
-print ('False is', ends_with([1,2,3], [0,1,2,3]))
-
-def is_sorted(list):
-  if len(list) == 0:
-    return True
-  for x in range (len(list) - 1):
-    if list[x] > list[x+ 1]:
       return False
   return True
