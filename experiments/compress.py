@@ -46,18 +46,15 @@ def decompress(list):
 # Example 4: [(1, 3), (2, 3)], 3 -> 2
 # Example 5: [(1, 3), (2, 3)], 4 -> 2
 # Example 6: [(1, 3), (2, 3)], 5 -> 2
+# Example 7: [(1, 3), (2, 3)], 4 -> None
 
-# [(1,3)], 4 -> None
-
-def element_by_index(list, index): #there is bug!
-  i = 0
-  count = list[i][1] - 1
-  while i < len(list):
-    if index > count:
-      count = count + list[i+1][1]
-      i = i + 1
-    else:
-      return list[i][0]
+def element_by_index(list, index):
+    sum = 0
+    for value, count in list:
+        sum = sum + count
+        if index < sum:
+            return value
+    return None
 
 
 def element_by_index_2(list, index):
