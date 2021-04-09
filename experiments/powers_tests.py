@@ -1,7 +1,7 @@
 import unittest
 from powers import powers_of_two, powers_of_three
 
-class TestShift(unittest.TestCase):
+class TestPowers(unittest.TestCase):
 
     def test_powers_of_two(self):
         self.assertEqual(powers_of_two(0), [])

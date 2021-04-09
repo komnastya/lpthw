@@ -1,9 +1,9 @@
 import unittest
 from truncate import truncate
 
-class TestFind(unittest.TestCase):
+class TestTruncate(unittest.TestCase):
 
-    def test_find(self):
+    def test_truncate(self):
       self.assertEqual(truncate([],3), [])
       self.assertEqual(truncate([1, 2, 3, 4, 5, 6], 3), [1,2,3])
       self.assertEqual(truncate([1, 2, 3, 4, 5, 6], 0), [])
