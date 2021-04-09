@@ -1,5 +1,5 @@
 import unittest
-from task1 import powers_of_two, powers_of_three
+from powers import powers_of_two, powers_of_three
 
 class TestShift(unittest.TestCase):
 
