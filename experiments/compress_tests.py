@@ -1,5 +1,5 @@
 import unittest
-from compress import decompress, compress
+from compress import decompress, compress, element_by_index
 
 class TestDecompress(unittest.TestCase):
 
@@ -19,6 +19,11 @@ class TestDecompress(unittest.TestCase):
             self.assertEqual(compress("abc"), [('a', 1), ('b', 1), ('c', 1)])
             self.assertEqual(compress("aaa"), [('a', 3)])
             self.assertEqual(compress("aaabbbcccxxxxxxxxxx"), [('a', 3), ('b', 3), ('c', 3), ('x', 10)])
+
+    def test_element_by_index(self):
+            self.assertEqual(element_by_index([(1, 3), (2, 3)], 1), 1)
+            self.assertEqual(element_by_index([(1, 3), (2, 3)], 3), 2)
+            self.assertEqual(element_by_index([(1, 3), (2, 3)], 6), None)
 
 
 if __name__ == '__main__':
