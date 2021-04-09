@@ -1,5 +1,5 @@
 import unittest
-from task8 import zig_zag, zig_zag_2
+from zigzag import zig_zag, zig_zag_2
 
 class TestShift(unittest.TestCase):
 
