@@ -1,7 +1,7 @@
 import unittest
-from task5 import equal, flat, flat_2, split, delete_repeated, delete_repeated_2
+from splitflat import equal, flat, flat_2, split
 
-class TestTask5(unittest.TestCase):
+class TestSplitFlat(unittest.TestCase):
 
     def test_equal(self):
         self.assertTrue(equal([],[]))
@@ -27,16 +27,6 @@ class TestTask5(unittest.TestCase):
         self.assertEqual(split([1,2,3], 2), [[1,2],[3]])
         self.assertEqual(split([1,2,3], 10), [[1,2,3]])
         self.assertEqual(split([1,2,3,4,5,6,7,8,9], 3), [[1,2,3],[4,5,6],[7,8,9]])
-
-    def test_delete_repeated(self):
-        self.assertEqual(delete_repeated([1,2,3,4,5]), [1,2,3,4,5])
-        self.assertEqual(delete_repeated([1,1,2,2,1,1]), [1,2,1])
-        self.assertEqual(delete_repeated([1,1,1]), [1])
-
-    def test_delete_repeated_2(self):
-        self.assertEqual(delete_repeated_2([1,2,3,4,5]), [1,2,3,4,5])
-        self.assertEqual(delete_repeated_2([1,1,2,2,1,1]), [1,2,1])
-        self.assertEqual(delete_repeated_2([1,1,1]), [1])
 
 
 if __name__ == '__main__':
