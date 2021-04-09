@@ -1,3 +1,7 @@
+#compress()
+#decompress()
+#element_by_index()
+
 # Takes a list of numbers and returns another list in which
 # the repeated sequences of the same value are replaced
 # with a pair (value, count).
@@ -57,9 +61,43 @@ def element_by_index(list, index):
     return None
 
 
-def element_by_index_2(list, index):
-  for value, count in list:
-    if count <= index:
-      index = index - count
-    else:
-      return value
+# List of pairs (value[i], count[i]) splits the whole range
+# into sub-intervals:
+#
+#
+#  (v0,c0)  (v1,c1)  (v2,c2)  (v3,c3)  (v4,c4)
+# +--------+--------+--------+---X----+--------+ len(list)
+#          |        |        |   ↑    |        |
+#          ^ sum0   |        |   ↑    |        |
+#                   ^ sum1   |   ↑    |        |
+#                            ^ sum2   |        |
+#                                ↑    ^ sum3   |
+#                                ↑             ^ sum4
+#                                ↑
+#                                ↑ index of the element to find
+#
+# We can scan the list of intervals from left to right, summing their lengths.
+#
+# If the index of the element to find is larger than or equal to the current
+# running sum, it means we have not reached the desired interval yet.
+#
+# Otherwise if the index of the element to find is less than the current
+# running sum, it means that the current interval contains the target element.
+#
+# In other words, the desired index is somewehere between two consecutive running sums.
+#
+# So the procedure is as follows:
+# 1. For each pair (value, count):
+# 2.  sum = sum + count
+# 3.  if index < sum then return value
+
+
+def element_by_index_buggy(list, index): #this function doesn't return None if index is out of range
+    i = 0
+    count = list[i][1] - 1
+    while i < len(list) - 1:
+        if index <= count:
+            return list[i][0]
+        else:
+            count = count + list[i + 1][1]
+        i = i + 1
