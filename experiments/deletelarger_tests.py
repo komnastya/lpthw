@@ -28,12 +28,12 @@ class TestDeleteLarger(unittest.TestCase):
 
     def test_delete_large_fast(self):
         list = [1, 11, 2, 12, 3, 13, 4, 14, 5, 15]
-        delete_large_slow(list, 10)
+        delete_large_fast(list, 10)
         self.assertEqual(list, [1,2,3,4,5])
 
         list = [1,2,3,4,5,6,7,8,9,10]
-        delete_large_slow(list, 5)
-        self.assertEqual(list, [1,2,3,4,5])
+        delete_large_fast(list, 5)
+        self.assertEqual(list, [1,2,3,4])
 
 
 if __name__ == '__main__':
