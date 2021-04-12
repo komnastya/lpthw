@@ -24,3 +24,14 @@ def delete_repeated_2(list):
       output.append(list[i])
     i = i + 1
   return output
+
+def removeDuplicates(nums):
+    w = 0
+    r = 0
+    while r < len(nums):
+        nums[w] = nums[r]
+        w = w + 1
+        r = r + 1
+        while r < len(nums) and nums[r - 1] == nums[r]:
+            r = r + 1
+    del nums[w:]

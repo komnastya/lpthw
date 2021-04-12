@@ -1,5 +1,5 @@
 import unittest
-from deleterepeated import delete_repeated, delete_repeated_2
+from deleterepeated import delete_repeated, delete_repeated_2, removeDuplicates
 
 class TestDeleteRepeated(unittest.TestCase):
 
@@ -20,6 +20,11 @@ class TestDeleteRepeated(unittest.TestCase):
         self.assertEqual(delete_repeated_2([1,2,3,4,5]), [1,2,3,4,5])
         self.assertEqual(delete_repeated_2([1,1,2,2,1,1]), [1,2,1])
         self.assertEqual(delete_repeated_2([1,1,1]), [1])
+
+    def test_removeDuplicates(self):
+        self.assertEqual(removeDuplicates([]), [])
+        self.assertEqual(removeDuplicates([1,1,2,2,1,1]), [1,2,1])
+        self.assertEqual(removeDuplicates([1,2,3,4,5]), [1,2,3,4,5])
 
 
 if __name__ == '__main__':
