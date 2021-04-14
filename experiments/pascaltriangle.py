@@ -31,17 +31,15 @@ def pascal_triangle(height):
 #Example: (4) -> [1,3,3,1]
 
 def pascal_triangle_by_index(height):
-    triangle = []
     previous_row = [1]
-    while len(triangle) <= height:
-        if len(triangle) == 0:
-            triangle.append(previous_row)
+    while len(previous_row) <= height:
+        if height == 0:
+            return previous_row
         else:
             current_row = []
             current_row.append(1)
             for i in range(len(previous_row) - 1):
                 current_row.append(previous_row[i] + previous_row[i + 1])
             current_row.append(1)
-            triangle.append(current_row)
             previous_row = current_row
-    return triangle[height]
+    return previous_row
