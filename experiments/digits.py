@@ -1,10 +1,4 @@
-# Converts the given list of digits in base 10 to a number.
-# []            -> 0
-# [0]           -> 0
-# [1]           -> 1
-# [1,0]         -> 10
-# [1,2,3,4,5]   -> 12345
-# Converts the given list of digits in base 10 to a number.
+# Converts the given list of digits in a  given base.
 # []            -> 0
 # [0]           -> 0
 # [1]           -> 1
@@ -14,11 +8,11 @@
 def digits_to_number(digits, base=10):
     number = 0
     for digit in digits:
-        number = number * base + digit  # good!
+        number = number * base + digit
     return number
 
 
-# Converts the given number to a list of digits in base 10.
+# Converts the given number to a list of digits in the given base.
 # 0     -> [0]
 # 1     -> [1]
 # 10    -> [1,0]
