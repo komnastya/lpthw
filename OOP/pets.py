@@ -12,11 +12,16 @@ class Owner:
         self.adopted_pets = []
 
     def adopt(self, pet):
-        if pet not in self.adopted_pets:
+        if pet not in self.adopted_pets and pet.pet_owner == None:
             self.adopted_pets.append(pet)
+            pet.pet_owner = self
+            return True
+        else:
+            return False
 
     def abandon(self, pet):
         self.adopted_pets.remove(pet)
+        pet.pet_owner = None
 
     def owns(self, pet):
         return pet in self.adopted_pets
@@ -25,26 +30,4 @@ class Owner:
 class Pet:
     def __init__(self, name):
         self.pet_name = name
-
-
-alice = Owner("Alice")
-bob = Owner("Bob")
-tom = Pet("Tom")
-jerry = Pet("Jerry")
-print(alice.owns(tom))  # False
-print(alice.owns(jerry))  # False
-
-alice.adopt(tom)
-alice.adopt(jerry)
-
-print(alice.owns(tom))  # True
-print(alice.owns(jerry))  # True
-
-alice.abandon(tom)
-alice.abandon(jerry)
-
-print(alice.owns(tom))  # False
-print(alice.owns(jerry))  # False
-
-bob.adopt(tom)
-bob.adopt(jerry)
+        self.pet_owner = None
