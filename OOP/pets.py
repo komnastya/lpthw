@@ -12,16 +12,20 @@ class Owner:
         self.adopted_pets = []
 
     def adopt(self, pet):
-        if pet not in self.adopted_pets and pet.pet_owner == None:
-            self.adopted_pets.append(pet)
-            pet.pet_owner = self
-            return True
-        else:
+        if pet in self.adopted_pets:
             return False
+        if pet.pet_owner != None:
+            pet.pet_owner.abandon(pet)
+        pet.pet_owner = self
+        self.adopted_pets.append(pet)
+        return True
 
     def abandon(self, pet):
+        if pet not in self.adopted_pets:
+            return False
         self.adopted_pets.remove(pet)
         pet.pet_owner = None
+        return True
 
     def owns(self, pet):
         return pet in self.adopted_pets

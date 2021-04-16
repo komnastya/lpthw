@@ -7,6 +7,7 @@ class TestPets(unittest.TestCase):
         pet = Pet("Tom")
 
         self.assertFalse(owner.owns(pet))
+        self.assertIsNone(pet.pet_owner)
 
         owner.adopt(pet)
         self.assertTrue(owner.owns(pet))
@@ -24,34 +25,53 @@ class TestPets(unittest.TestCase):
 
         owner0.adopt(pet0)
         owner0.adopt(pet1)
-        owner1.adopt(pet0)
 
         self.assertTrue(owner0.owns(pet0))
         self.assertEqual(pet0.pet_owner, owner0)
         self.assertTrue(owner0.owns(pet1))
         self.assertEqual(pet1.pet_owner, owner0)
-        self.assertFalse(owner1.owns(pet0))
+
+        self.assertEqual(owner0.adopted_pets, [pet0, pet1])
+
+        owner0.adopt(pet0)
+        self.assertEqual(owner0.adopted_pets, [pet0, pet1])
+
+        owner1.adopt(pet0)
+        self.assertTrue(owner1.owns(pet0))
+        self.assertEqual(pet0.pet_owner, owner1)
+        self.assertFalse(owner0.owns(pet0))
 
     def test_abandon(self):
         owner = Owner("Alice")
+        owner1 = Owner("Bob")
         pet = Pet("Tom")
+        pet1 = Pet("Jerry")
 
         owner.adopt(pet)
         owner.abandon(pet)
 
+        self.assertFalse(owner.abandon(pet1))
         self.assertFalse(owner.owns(pet))
         self.assertEqual(pet.pet_owner, None)
 
+        owner.adopt(pet)
+        self.assertFalse(owner1.abandon(pet))
+        self.assertEqual(pet.pet_owner, owner)
+
     def test_pet_owner(self):
         pet = Pet("Tom")
-        owner = Owner("Alice")
+        owner0 = Owner("Alice")
         owner1 = Owner("Bob")
 
         self.assertEqual(pet.pet_owner, None)
-        owner.adopt(pet)
 
-        self.assertIs(pet.pet_owner, owner)
-        self.assertFalse(owner1.adopt(pet))
+        owner0.adopt(pet)
+        self.assertIs(pet.pet_owner, owner0)
+
+        owner1.adopt(pet)
+        self.assertIs(pet.pet_owner, owner1)
+        self.assertTrue(owner1.owns(pet))
+        self.assertFalse(owner0.owns(pet))
 
 
 if __name__ == '__main__':
