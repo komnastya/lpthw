@@ -30,7 +30,6 @@ def winner(list):
 
 
 def show(board, winner):
-    print (board)
     for i in range(len(board)):
         print("+---+---+---+")
         print('|', end='')
