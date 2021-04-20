@@ -16,8 +16,7 @@ def winner(moves):
         else:
             mark = 'O'
         board[v][h] = mark
-        if (
-                board[v][0] == board[v][1] == board[v][2] != " "
+        if (board[v][0] == board[v][1] == board[v][2] != " "
                 or board[0][h] == board[1][h] == board[2][h] != " "
                 or board[0][0] == board[1][1] == board[2][2] != " "
                 or board[2][0] == board[1][1] == board[0][2] != " "):
@@ -41,24 +40,30 @@ def show(board, output):
     print(f'\n{output}')
 
 
+def get_move():
+    while True:
+        move = input('\nChose your move: ')
+        parts = move.strip().split(" ")
+        if len(parts) == 2:
+            try:
+                v, h = parts
+                v, h = int(v), int(h)
+                if 1 <= v <= 3 and 1 <= h <= 3:
+                    return (v - 1, h - 1)
+            except ValueError:
+                pass
+        print('Please, enter two numbers in range [1,3] separated by space')
+
 def game():
     moves = []
     while True:
-        move = input('\nChose your move: ').strip()
-        v, h = move.split(" ")
-        v, h = int(v) - 1, int(h) - 1
-        if 0 <= v < 4 and 0 <= h < 4:
-            moves.append((v, h))
-            board, output = winner(moves)
-            show(board, output)
-            if output == 'A is winner' or output == 'B is winner' or output == 'Draw':
-                print('\nGame is over!')
-                break
-        else:
-            # FIXME You are overeacting here.
-            # It is the responsibility of the winner function to raise exceptions.
-            # But here we can simply print an error message and continue the cycle.
-            raise InvalidMoveError
+        v, h = get_move()
+        moves.append((v, h))
+        board, output = winner(moves)
+        show(board, output)
+        if output != 'Pending...':
+            print('\nGame is over!')
+            break
 
 
 print("Welcome to the Tic Tac Toe game!\n")
