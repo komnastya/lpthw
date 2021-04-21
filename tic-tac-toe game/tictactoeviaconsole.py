@@ -8,7 +8,7 @@ def winner(moves):
     board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
     for istep, (v, h) in enumerate(moves):
         if board[v][h] != " ":
-            raise InvalidMoveError(f'Invalid move, the cell ({v}, {h}) is already occupied with "{board[v][h]}"')
+            raise InvalidMoveError(f'Invalid move, the cell ({v}, {h}) is already occupied with "{board[v][h]}" ')
         mark = None
         if istep % 2 == 0:
             mark = 'X'
