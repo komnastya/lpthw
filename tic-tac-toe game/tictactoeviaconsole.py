@@ -1,5 +1,11 @@
 class InvalidMoveError(Exception):
-  pass
+    def __init__(self, v, h, cell):
+        self.h = h
+        self.v = v
+        self.cell = cell
+        super().__init__(
+            "Invalid move, cell ({}, {}) is already occupied with {}".format(
+                self.v, self.h, self.cell))
 
 
 def winner(moves):
@@ -7,9 +13,7 @@ def winner(moves):
     for istep, (v, h) in enumerate(moves):
         cell = board[v][h]
         if cell != " ":
-            raise InvalidMoveError(
-                f'Invalid move, the cell ({v}, {h}) is already occupied with "{cell}"'
-            )
+            raise InvalidMoveError(v, h, cell)
         mark = None
         if istep % 2 == 0:
             mark = "X"
@@ -59,9 +63,9 @@ def game():
     moves = []
     while True:
         v, h = get_move()
-        #if (v, h) in moves:
-        #    print("Repeated move")
-        #    continue
+        if (v, h) in moves:
+            print("Repeated move")
+            continue
         moves.append((v, h))
         board, output = winner(moves)
         show(board, output)
