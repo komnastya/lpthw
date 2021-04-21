@@ -1,15 +1,14 @@
 class InvalidMoveError(Exception):
+    pass
     # TODO An an excersice, extend this class with the details about the invalid move,
     # such as `v` and `h` to show a pretty error message, such as:
     # "Invalid move, the cell (1, 2) is already occupied with 'X'."
-    pass
-
 
 def winner(moves):
     board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
     for istep, (v, h) in enumerate(moves):
         if board[v][h] != " ":
-            raise InvalidMoveError()
+            raise InvalidMoveError(f'Invalid move, the cell ({v}, {h}) is already occupied with "{board[v][h]}"')
         mark = None
         if istep % 2 == 0:
             mark = 'X'
@@ -61,8 +60,8 @@ def game():
         moves.append((v, h))
         board, output = winner(moves)
         show(board, output)
-        if output != 'Pending...':
-            print('\nGame is over!')
+        if output != "Pending...":
+            print("\nGame over!")
             break
 
 
