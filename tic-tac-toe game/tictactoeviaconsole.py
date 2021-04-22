@@ -8,32 +8,42 @@ class InvalidMoveError(Exception):
                 self.v, self.h, self.cell))
 
 
-def winner(moves):
+board = None
+moves = None
+
+
+def reset_game():
+    global board
+    global moves
     board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
-    for istep, (v, h) in enumerate(moves):
-        cell = board[v][h]
-        if cell != " ":
-            raise InvalidMoveError(v, h, cell)
-        mark = None
-        if istep % 2 == 0:
-            mark = "X"
-        else:
-            mark = "O"
-        board[v][h] = mark
-        if (board[v][0] == board[v][1] == board[v][2] != " "
-                or board[0][h] == board[1][h] == board[2][h] != " "
-                or board[0][0] == board[1][1] == board[2][2] != " "
-                or board[2][0] == board[1][1] == board[0][2] != " "):
-            if mark == "X":
-                return board, "A is winner"
-            if mark == "O":
-                return board, "B is winner"
+    moves = []
+
+
+def winner(v, h):
+    cell = board[v][h]
+    if cell != " ":
+        raise InvalidMoveError(v, h, cell)
+    moves.append((v, h))
+    mark = None
+    if len(moves) % 2 == 0:
+        mark = "X"
+    else:
+        mark = "O"
+    board[v][h] = mark
+    if (board[v][0] == board[v][1] == board[v][2] != " "
+            or board[0][h] == board[1][h] == board[2][h] != " "
+            or board[0][0] == board[1][1] == board[2][2] != " "
+            or board[2][0] == board[1][1] == board[0][2] != " "):
+        if mark == "X":
+            return "A is winner"
+        if mark == "O":
+            return "B is winner"
     if len(moves) == 9:
-        return board, "Draw"
-    return board, "Pending..."
+        return "Draw"
+    return "Pending..."
 
 
-def show(board, output):
+def show(output):
     for i in range(len(board)):
         print("+---+---+---+")
         print("|", end="")
@@ -60,15 +70,15 @@ def get_move():
 
 
 def game():
-    moves = []
+    reset_game()
     while True:
         v, h = get_move()
-        if (v, h) in moves:
-            print("Repeated move")
+        try:
+            output = winner(v, h)
+        except InvalidMoveError as error:
+            print(error)
             continue
-        moves.append((v, h))
-        board, output = winner(moves)
-        show(board, output)
+        show(output)
         if output != "Pending...":
             print("\nGame over!")
             break
@@ -76,4 +86,5 @@ def game():
 
 print("Welcome to the Tic Tac Toe game!\n")
 
-game()
+while True:
+    game()
