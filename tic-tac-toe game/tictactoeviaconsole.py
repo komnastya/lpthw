@@ -7,7 +7,6 @@ class InvalidMoveError(Exception):
             "Invalid move, cell ({}, {}) is already occupied with {}".format(
                 self.v, self.h, self.cell))
 
-
 board = None
 moves = None
 
@@ -19,24 +18,26 @@ def reset_game():
     moves = []
 
 
+def current_player():
+    if len(moves) % 2 == 0:
+        return "X"
+    return "O"
+
+
 def winner(v, h):
+    player = current_player()
     cell = board[v][h]
     if cell != " ":
         raise InvalidMoveError(v, h, cell)
     moves.append((v, h))
-    mark = None
-    if len(moves) % 2 == 0:
-        mark = "X"
-    else:
-        mark = "O"
-    board[v][h] = mark
+    board[v][h] = player
     if (board[v][0] == board[v][1] == board[v][2] != " "
             or board[0][h] == board[1][h] == board[2][h] != " "
             or board[0][0] == board[1][1] == board[2][2] != " "
             or board[2][0] == board[1][1] == board[0][2] != " "):
-        if mark == "X":
+        if player == "X":
             return "A is winner"
-        if mark == "O":
+        if player == "O":
             return "B is winner"
     if len(moves) == 9:
         return "Draw"
@@ -56,7 +57,7 @@ def show(output):
 
 def get_move():
     while True:
-        move = input("\nChose your move: ")
+        move = input(f"Player {current_player()} chose your move: ")
         parts = move.strip().split(" ")
         if len(parts) == 2:
             try:
@@ -87,4 +88,5 @@ def game():
 print("Welcome to the Tic Tac Toe game!\n")
 
 while True:
+    print("Let's play!\n")
     game()
