@@ -50,16 +50,17 @@ class Board:
 
 
 def get_computer_move(board):
-    v = random.randint(0, 2)
-    h = random.randint(0, 2)
-    print(f'Computer move is {v + 1}, {h + 1}')
-    return v, h
+    while True:
+        v = random.randint(0, 2)
+        h = random.randint(0, 2)
+        if board._board[v][h] == ' ':
+            print(f'\nComputer move is: {v + 1} {h + 1}')
+            return v, h
 
 
 def get_human_move(board):
     while True:
-        move = input(
-            f"\nPlayer {board.get_current_player()} chose your move: ")
+        move = input(f"\nHuman move is: ")
         parts = move.strip().split(" ")
         if len(parts) == 2:
             try:
