@@ -1,55 +1,52 @@
 class InvalidMoveError(Exception):
-    def __init__(self, v, h, cell):
-        self.h = h
-        self.v = v
-        self.cell = cell
-        super().__init__(
-            "Invalid move, cell ({}, {}) is already occupied with {}".format(
-                self.v, self.h, self.cell))
+    pass
+
 
 class Board:
-    def __init__ (self):
-        self.board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
-        self.moves = []
+    def __init__(self):
+        self._board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+        self._moves = []
+        self._winner = None
 
-    def winner(self, v, h):
-        player = self.current_player()
-        cell = self.board[v][h]
+    def make_move(self, v, h):
+        if self.is_game_over():
+            raise InvalidMoveError("Game is already over.")
+        cell = self._board[v][h]
         if cell != " ":
-            raise InvalidMoveError(v, h, cell)
-        self.moves.append((v, h))
-        self.board[v][h] = player
-        if (self.board[v][0] == self.board[v][1] == self.board[v][2] != " "
-                or self.board[0][h] == self.board[1][h] == self.board[2][h] != " "
-                or self.board[0][0] == self.board[1][1] == self.board[2][2] != " "
-                or self.board[2][0] == self.board[1][1] == self.board[0][2] != " "):
-            if player == "X":
-                return "A is winner"
-            if player == "O":
-                return "B is winner"
-        if len(self.moves) == 9:
-            return "Draw"
-        return "Pending..."
+            raise InvalidMoveError(f"Cell ({v+1}, {h+1}) is already occupied with {cell}.")
+        player = self.get_current_player()
+        self._moves.append((v, h))
+        self._board[v][h] = player
+        if (self._board[v][0] == self._board[v][1] == self._board[v][2] != " "
+                or self._board[0][h] == self._board[1][h] == self._board[2][h] != " "
+                or self._board[0][0] == self._board[1][1] == self._board[2][2] != " "
+                or self._board[2][0] == self._board[1][1] == self._board[0][2] != " "):
+            self._winner = player
 
-    def current_player(self):
-        if len(self.moves) % 2 == 0:
+    def is_game_over(self):
+        return self.get_winner() is not None or len(self._moves) == 9
+
+    def get_winner(self):
+        return self._winner
+
+    def get_current_player(self):
+        if len(self._moves) % 2 == 0:
             return "X"
         return "O"
 
-    def show(self, output):
-        for i in range(len(self.board)):
+    def show(self):
+        for i in range(len(self._board)):
             print("+---+---+---+")
             print("|", end="")
-            for j in range(len(self.board)):
-                print(f" {self.board[i][j]} |", end="")
+            for j in range(len(self._board)):
+                print(f" {self._board[i][j]} |", end="")
             print()
         print("+---+---+---+")
-        print(f"\n{output}")
 
 
 def get_move(board):
     while True:
-        move = input(f"Player {board.current_player()} chose your move: ")
+        move = input(f"\nPlayer {board.get_current_player()} chose your move: ")
         parts = move.strip().split(" ")
         if len(parts) == 2:
             try:
@@ -64,17 +61,23 @@ def get_move(board):
 
 def game():
     board = Board()
-    while True:
+
+    while not board.is_game_over():
         v, h = get_move(board)
         try:
-            output = board.winner(v, h)
+            board.make_move(v, h)
         except InvalidMoveError as error:
             print(error)
             continue
-        board.show(output)
-        if output != "Pending...":
-            print("\nGame over!")
-            break
+        board.show()
+
+    print("Game over!")
+    winner = board.get_winner()
+    if winner is not None:
+        print(f"The winner is {winner}\n")
+    else:
+        print ("Draw\n")
+
 
 
 print("Welcome to the Tic Tac Toe game!\n")
