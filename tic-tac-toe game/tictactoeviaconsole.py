@@ -1,3 +1,6 @@
+import random
+
+
 class InvalidMoveError(Exception):
     pass
 
@@ -13,14 +16,16 @@ class Board:
             raise InvalidMoveError("Game is already over.")
         cell = self._board[v][h]
         if cell != " ":
-            raise InvalidMoveError(f"Cell ({v+1}, {h+1}) is already occupied with {cell}.")
+            raise InvalidMoveError(
+                f"Cell ({v+1}, {h+1}) is already occupied with {cell}.")
         player = self.get_current_player()
         self._moves.append((v, h))
-        self._board[v][h] = player
-        if (self._board[v][0] == self._board[v][1] == self._board[v][2] != " "
-                or self._board[0][h] == self._board[1][h] == self._board[2][h] != " "
-                or self._board[0][0] == self._board[1][1] == self._board[2][2] != " "
-                or self._board[2][0] == self._board[1][1] == self._board[0][2] != " "):
+        board = self._board
+        board[v][h] = player
+        if (board[v][0] == board[v][1] == board[v][2] != " "
+                or board[0][h] == board[1][h] == board[2][h] != " "
+                or board[0][0] == board[1][1] == board[2][2] != " "
+                or board[2][0] == board[1][1] == board[0][2] != " "):
             self._winner = player
 
     def is_game_over(self):
@@ -44,9 +49,17 @@ class Board:
         print("+---+---+---+")
 
 
-def get_move(board):
+def get_computer_move(board):
+    v = random.randint(0, 2)
+    h = random.randint(0, 2)
+    print(f'Computer move is {v + 1}, {h + 1}')
+    return v, h
+
+
+def get_human_move(board):
     while True:
-        move = input(f"\nPlayer {board.get_current_player()} chose your move: ")
+        move = input(
+            f"\nPlayer {board.get_current_player()} chose your move: ")
         parts = move.strip().split(" ")
         if len(parts) == 2:
             try:
@@ -57,6 +70,13 @@ def get_move(board):
             except ValueError:
                 pass
         print("Please enter two numbers in range [1,3]")
+
+
+def get_move(board):
+    if board.get_current_player() == 'X':
+        return get_human_move(board)
+    else:
+        return get_computer_move(board)
 
 
 def game():
@@ -74,14 +94,13 @@ def game():
     print("Game over!")
     winner = board.get_winner()
     if winner is not None:
-        print(f"The winner is {winner}\n")
+        print(f"The winner is {winner}")
     else:
-        print ("Draw\n")
+        print("Draw")
 
 
-
-print("Welcome to the Tic Tac Toe game!\n")
+print("Welcome to the Tic Tac Toe game!")
 
 while True:
-    print("Let's play!\n")
+    print("Let's play!")
     game()
