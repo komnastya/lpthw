@@ -177,11 +177,16 @@ def wiggle_numbers(nums):
 print(wiggle_numbers([72, 26, 79, 70, 20, 68, 43, -71, 71, -2]))
 
 
+# """Encrypt lol:
+# Given a sentence, return the setence will all it's letter transposed by 1 in the alphabet, but only if the letter is a-y.
+#    >>> encrypt_lol('the quick brown fox jumps over the lazy dog')
+#    'uif rvjdl cspxo gpy kvnqt pwfs uif mbzy eph'
+
+
 def encrypt_lol(sentence):
-    # """Encrypt lol:
-    # Given a sentence, return the setence will all it's letter transposed by 1 in the alphabet, but only if the letter is a-y.
-    #    >>> encrypt_lol('the quick brown fox jumps over the lazy dog')
-    #    'uif rvjdl cspxo gpy kvnqt pwfs uif mbzy eph'
-    # TODO
-    abc = "abcdefghijklmnopqrstuvxyz"
-    pass
+    return "".join(
+        chr(ord(i) + 1) if ord(i) in range(ord("a"), ord("y")) else i for i in sentence
+    )
+
+
+print(encrypt_lol("the quick brown fox jumps over the lazy dog"))
