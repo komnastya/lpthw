@@ -141,10 +141,7 @@ print(vowels("mathematics"))
 
 
 def vowels_set(word):
-    sentence = [x for x in word if x in "aeiou"]
-
-    # !!! Remove duplicates TODO
-    return sentence
+    return {x for x in word if x in "aeiou"}
 
 
 print(vowels_set("mathematics"))
