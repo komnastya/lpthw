@@ -1,77 +1,110 @@
 import unittest
 from pets import Owner, Pet
 
+
 class TestPets(unittest.TestCase):
-    def test_owns(self):
+    def test_initially_not_onwed(self):
         owner = Owner("Alice")
         pet = Pet("Tom")
 
         self.assertFalse(owner.owns(pet))
-        self.assertIsNone(pet.pet_owner)
+        self.assertIsNone(pet.owner)
 
-        owner.adopt(pet)
+    def test_owner_adopts_an_orphat_pet(self):
+        owner = Owner("Alice")
+        pet = Pet("Tom")
+
+        self.assertTrue(owner.adopt(pet))
         self.assertTrue(owner.owns(pet))
-        self.assertIs(pet.pet_owner, owner)
+        self.assertIs(pet.owner, owner)
 
-        owner.abandon(pet)
-        self.assertFalse(owner.owns(pet))
-        self.assertIsNone(pet.pet_owner)
-
-    def test_adopted_by_many(self):
-        owner0 = Owner("Alice")
-        owner1 = Owner('Bob')
-        pet0 = Pet("Tom")
-        pet1 = Pet("Jerry")
-
-        owner0.adopt(pet0)
-        owner0.adopt(pet1)
-
-        self.assertTrue(owner0.owns(pet0))
-        self.assertEqual(pet0.pet_owner, owner0)
-        self.assertTrue(owner0.owns(pet1))
-        self.assertEqual(pet1.pet_owner, owner0)
-
-        self.assertEqual(owner0.adopted_pets, [pet0, pet1])
-
-        owner0.adopt(pet0)
-        self.assertEqual(owner0.adopted_pets, [pet0, pet1])
-
-        owner1.adopt(pet0)
-        self.assertTrue(owner1.owns(pet0))
-        self.assertEqual(pet0.pet_owner, owner1)
-        self.assertFalse(owner0.owns(pet0))
-
-    def test_abandon(self):
+    def test_owner_adopts_a_pet_it_already_owns(self):
         owner = Owner("Alice")
-        owner1 = Owner("Bob")
         pet = Pet("Tom")
-        pet1 = Pet("Jerry")
 
-        owner.adopt(pet)
-        owner.abandon(pet)
+        self.assertTrue(owner.adopt(pet))
+        self.assertFalse(owner.adopt(pet))
+        self.assertTrue(owner.owns(pet))
+        self.assertIs(pet.owner, owner)
 
-        self.assertFalse(owner.abandon(pet1))
+    def test_owner_adopts_a_pet_owned_by_someone(self):
+        alice = Owner("Alice")
+        bob = Owner("Bob")
+        pet = Pet("Tom")
+
+        self.assertTrue(alice.adopt(pet))
+        self.assertTrue(bob.adopt(pet))
+
+        self.assertFalse(alice.owns(pet))
+        self.assertTrue(bob.owns(pet))
+        self.assertIs(pet.owner, bob)
+
+    def test_owner_abandon_pet_it_owns(self):
+        owner = Owner("Alice")
+        pet = Pet("Tom")
+
+        self.assertTrue(owner.adopt(pet))
+        self.assertTrue(owner.abandon(pet))
+
         self.assertFalse(owner.owns(pet))
-        self.assertEqual(pet.pet_owner, None)
+        self.assertIsNone(pet.owner)
 
-        owner.adopt(pet)
-        self.assertFalse(owner1.abandon(pet))
-        self.assertEqual(pet.pet_owner, owner)
-
-    def test_pet_owner(self):
+    def test_owner_abandon_pet_it_does_not_own(self):
+        owner = Owner("Alice")
         pet = Pet("Tom")
-        owner0 = Owner("Alice")
-        owner1 = Owner("Bob")
 
-        self.assertEqual(pet.pet_owner, None)
+        self.assertFalse(owner.abandon(pet))
 
-        owner0.adopt(pet)
-        self.assertIs(pet.pet_owner, owner0)
+    def test_pet_gets_an_owner(self):
+        owner = Owner("Alice")
+        pet = Pet("Tom")
 
-        owner1.adopt(pet)
-        self.assertIs(pet.pet_owner, owner1)
-        self.assertTrue(owner1.owns(pet))
-        self.assertFalse(owner0.owns(pet))
+        pet.owner = owner
+
+        self.assertTrue(owner.owns(pet))
+        self.assertIs(pet.owner, owner)
+
+    def test_pet_changes_an_owner(self):
+        alice = Owner("Alice")
+        bob = Owner("Bob")
+        pet = Pet("Tom")
+
+        pet.owner = alice
+
+        self.assertTrue(alice.owns(pet))
+        self.assertFalse(bob.owns(pet))
+        self.assertIs(pet.owner, alice)
+
+        pet.owner = bob
+
+        self.assertFalse(alice.owns(pet))
+        self.assertTrue(bob.owns(pet))
+        self.assertIs(pet.owner, bob)
+
+    def test_pet_loses_an_owner(self):
+        owner = Owner("Alice")
+        pet = Pet("Tom")
+
+        pet.owner = owner
+
+        self.assertTrue(owner.owns(pet))
+        self.assertIs(pet.owner, owner)
+
+        pet.owner = None
+
+        self.assertFalse(owner.owns(pet))
+        self.assertIsNone(pet.owner)
+
+    def test_pet_changes_its_owner_to_the_same_owner(self):
+        owner = Owner("Alice")
+        pet = Pet("Tom")
+
+        pet.owner = owner
+        pet.owner = owner
+
+        self.assertTrue(owner.owns(pet))
+        self.assertIs(pet.owner, owner)
+
 
 
 if __name__ == '__main__':

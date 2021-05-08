@@ -1,37 +1,54 @@
-# Implement classes, test them with unit tests.
-
-# The relationship is one owner to many pets, one owner can own many pets.
-# One pet can belong to many owners. We will fix this later.
-# Owner has a name attribute.
-# Owner has a list of owned pets attribute.
+import unittest
 
 
 class Owner:
     def __init__(self, name):
         self.person_name = name
-        self.adopted_pets = []
+        self._adopted_pets = []
 
     def adopt(self, pet):
-        if pet in self.adopted_pets:
+        if self.owns(pet):
             return False
-        if pet.pet_owner != None:
-            pet.pet_owner.abandon(pet)
-        pet.pet_owner = self
-        self.adopted_pets.append(pet)
+        if pet.owner != None:
+            pet.owner.abandon(pet)
+        self._adopted_pets.append(pet)
+        pet.owner = self
         return True
 
     def abandon(self, pet):
-        if pet not in self.adopted_pets:
+        if not self.owns(pet):
             return False
-        self.adopted_pets.remove(pet)
-        pet.pet_owner = None
+        self._adopted_pets.remove(pet)
+        pet.owner = None
         return True
 
     def owns(self, pet):
-        return pet in self.adopted_pets
+        return pet in self._adopted_pets and pet.owner is self
+
+    def _is_consistent(self):
+        for pet in self._adopted_pets:
+            assert pet._pet_owner is self
 
 
 class Pet:
     def __init__(self, name):
         self.pet_name = name
-        self.pet_owner = None
+        self._pet_owner = None
+
+    @property
+    def owner(self):
+        return self._pet_owner
+
+    @owner.setter
+    def owner(self, owner):
+        if self._pet_owner == owner:
+            return False
+        if self._pet_owner is not None:
+            self._pet_owner._adopted_pets.remove(self)
+        self._pet_owner = owner
+        if self._pet_owner is not None:
+            self._pet_owner._adopted_pets.append(self)
+        return True
+
+    def _is_consistent(self):
+        assert self._pet_owner.owns(self)
