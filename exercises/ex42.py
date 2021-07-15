@@ -33,7 +33,7 @@ class Person(object):
 #class Employee is-a object of class Person
 class Employee(Person):
     def __init__(self, name, salary):
-        #class Employee has a __init___ that takes self, name, and salary parameters
+        #class Employee has a __init___ that takes self, name and salary parameters
         super(Employee, self).__init__(name)
         #
         self.salary = salary
@@ -46,7 +46,7 @@ class Employee(Person):
 class Fish (object):
     pass
 
-#class Salmon is-a Fish
+#Salmon is-a Fish
 class Salmon (Fish):
     pass
 
