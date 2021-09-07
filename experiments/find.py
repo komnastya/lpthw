@@ -1,3 +1,6 @@
+from typing import Any, List
+
+
 # Searches for the needle element
 # in the haystak list,
 # returns the first index of the found element
@@ -8,7 +11,8 @@
 # Given list=[0,2,2,4], element=4, result=3
 # Given list=[0,2,2,4], element=1, result=-1
 
-def find(list, element):
+
+def find(list: List[Any], element: Any) -> int:
   for i in range (len(list)):
     if list[i] == element:
       return i

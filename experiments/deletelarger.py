@@ -1,14 +1,15 @@
-#Write a function which deletes from list all elements larger than max.
+from typing import List
 
 # Deletes from the given list all elements larger than max.
 # Example: delete_large([1,2,3,4,5,6,7,8,1], 1) -> [1,1]
 # Example: delete_large([1,2,3,4,5,6,7,8,1], 3) -> [1,2,3,1]
 # Example: delete_large([1,2,3,4,5,6,7,8,9], 9) -> [1,2,3,4,5,6,7,8,9]
-  # Write two implementations:
-  # 1. An implementation which returns a new list.
-  # 2. An implementation which modifies the given list and does not return anything.
+# Write two implementations:
+# 1. An implementation which returns a new list.
+# 2. An implementation which modifies the given list and does not return anything.
 
-def delete_large(list, max):
+
+def delete_large(list: List[int], max: int) -> List:
     output = []
     for x in list:
         if x <= max:
@@ -16,9 +17,9 @@ def delete_large(list, max):
     return output
 
 
-#This function change the list, and returns modified list, but does it slowly
+# This function change the list, and returns modified list, but does it slowly
 
-def delete_large_slow(list, max):
+def delete_large_slow(list: List[int], max: int) -> None:
     i = 0
     while i < len(list):
         if list[i] > max:
@@ -26,9 +27,10 @@ def delete_large_slow(list, max):
         else:
             i = i + 1
 
+
 # reverse example
 
-def delete_small(list, min):
+def delete_small(list: List[int], min: int) -> None:
     i = 0
     while i < len(list):
         if list[i] <= min:
@@ -36,7 +38,8 @@ def delete_small(list, min):
         else:
             i = i + 1
 
-def delete_large_fast(list, max):
+
+def delete_large_fast(list: List[int], max: int) -> None:
     r = 0
     w = 0
     while r < len(list):
@@ -46,7 +49,6 @@ def delete_large_fast(list, max):
             list[w] = value
             w = w + 1
     del list[w:]
-
 
 # Delete_large_fast function explanation -> -> ->
 
@@ -58,7 +60,7 @@ def delete_large_fast(list, max):
 #        w
 #      | 0 |   |   |   |   |   |   |
 
-# 2
+# 20
 
 #      | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
 #            r

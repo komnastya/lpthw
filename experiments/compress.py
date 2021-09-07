@@ -1,6 +1,6 @@
-#compress()
-#decompress()
-#element_by_index()
+from typing import Any, List, Optional, Tuple
+
+CompressedSeq = List[Tuple[int, Any]]
 
 # Takes a list of numbers and returns another list in which
 # the repeated sequences of the same value are replaced
@@ -11,8 +11,8 @@
 # Example 2: [1, 1, 1] -> [(1, 3)]
 # Example 3: [1, 2, 3] -> [(1, 1), (2, 1), (3, 1)]
 # Example 4: [1, 1, 1, 2, 2, 2, 2, 2] -> [(1, 3), (2, 5)]
-def compress(list):
-    output = []
+def compress(list: List) -> CompressedSeq:
+    output: List[Tuple[int, Any]] = []
     if len(list) == 0:
         return output
     count = 1
@@ -34,13 +34,14 @@ def compress(list):
 # Example 3: [(1, 1), (2, 1), (3, 1)] -> [1, 2, 3]
 # Example 4: [(1, 3), (2, 5)] -> [1, 1, 1, 2, 2, 2, 2, 2]
 # Example 5: [(999, 0)] -> []
-def decompress(list):
+def decompress(list: CompressedSeq) -> List:
     output = []
     for value, count in list:
         while count > 0:
             output.append(value)
             count = count - 1
     return output
+
 
 # Takes a compressed list of pairs (value, count) and an index,
 # then returns the element by the given index in a decompressed list.
@@ -52,7 +53,7 @@ def decompress(list):
 # Example 6: [(1, 3), (2, 3)], 5 -> 2
 # Example 7: [(1, 3), (2, 3)], 4 -> None
 
-def element_by_index(list, index):
+def element_by_index(list: CompressedSeq, index: int) -> Optional[Any]:
     sum = 0
     for value, count in list:
         sum = sum + count
@@ -92,7 +93,7 @@ def element_by_index(list, index):
 # 3.  if index < sum then return value
 
 
-def element_by_index_buggy(list, index): #this function doesn't return None if index is out of range
+def element_by_index_buggy(list: CompressedSeq, index: int):  # TODO this function doesn't return None if index is out of range
     i = 0
     count = list[i][1] - 1
     while i < len(list) - 1:
