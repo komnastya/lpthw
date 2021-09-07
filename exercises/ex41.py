@@ -1,10 +1,10 @@
 # ex41
 
 import random  # a module that generates random numbers
+import sys  # import system functions
 from urllib.request import (
     urlopen,
 )  ##urllib.request is a Python module for openning URLs
-import sys  # import system functions
 
 WORD_URL = "http://learncodethehardway.org/words.txt"  # string
 WORDS = []  # empty list

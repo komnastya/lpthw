@@ -1,6 +1,5 @@
-# python -m unittest discover -p "*_test.py"
-
 import unittest
+
 from find import find
 
 

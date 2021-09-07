@@ -1,5 +1,6 @@
 import unittest
-from combine import my_combine, combine
+
+from combine import combine, my_combine
 
 
 class TestCombine(unittest.TestCase):

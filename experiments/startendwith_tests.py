@@ -1,5 +1,6 @@
 import unittest
-from startendwith import starts_with, ends_with
+
+from startendwith import ends_with, starts_with
 
 
 class TestStartEndWith(unittest.TestCase):

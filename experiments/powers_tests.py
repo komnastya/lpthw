@@ -1,5 +1,6 @@
 import unittest
-from powers import powers_of_two, powers_of_three
+
+from powers import powers_of_three, powers_of_two
 
 
 class TestPowers(unittest.TestCase):

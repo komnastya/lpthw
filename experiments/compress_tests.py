@@ -1,5 +1,6 @@
 import unittest
-from compress import decompress, compress, element_by_index
+
+from compress import compress, decompress, element_by_index
 
 
 class TestDecompress(unittest.TestCase):

@@ -1,4 +1,5 @@
 import unittest
+
 from zigzag import zig_zag, zig_zag_2
 
 

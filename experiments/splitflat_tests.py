@@ -1,5 +1,6 @@
 import unittest
-from splitflat import equal, flat, flat_2, split
+
+from splitflat import equal, flat, split
 
 
 class TestSplitFlat(unittest.TestCase):

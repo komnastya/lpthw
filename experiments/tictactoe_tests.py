@@ -1,5 +1,4 @@
 import unittest
-from tictactoe import winner
 
 
 class TestTicTacToe(unittest.TestCase):

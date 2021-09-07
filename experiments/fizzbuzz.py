@@ -1,5 +1,4 @@
-from typing import List, Tuple, Union, Literal
-
+from typing import List, Literal, Tuple, Union
 
 # For every number in range 1..100:
 # a) If the number is divisible by both 3 and 5, print “fizz-buzz”

@@ -1,9 +1,10 @@
 import unittest
+
 from deletelarger import (
     delete_large,
+    delete_large_fast,
     delete_large_slow,
     delete_small,
-    delete_large_fast,
 )
 
 

@@ -1,6 +1,3 @@
-import unittest
-
-
 class Owner:
     def __init__(self, name):
         self.person_name = name

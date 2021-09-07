@@ -1,7 +1,8 @@
 # python -m unittest discover -p "*_test.py"
 
 import unittest
-from shift import shift_while, shift_for
+
+from shift import shift_for, shift_while
 
 
 class TestShift(unittest.TestCase):
