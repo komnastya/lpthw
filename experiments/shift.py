@@ -1,3 +1,6 @@
+from typing import List
+
+
 # Shifts all list elements to the left by one position.
 # The first element will become the last,
 # the 3rd element will become the 2nd,
@@ -23,8 +26,8 @@
 # Example: [1,2,3,4,5,6,7,8,9] -> [2,3,4,5,6,7,8,9,1]
 
 
-def shift_reverse(list):
-    output = []
+def shift_reverse(list: List[int]) -> List[int]:
+    output: List[int] = []
     if len(list) == 0:
         return output
     for i in range(len(list)):
@@ -32,8 +35,8 @@ def shift_reverse(list):
     return output
 
 
-def shift_while(list):
-    output = []
+def shift_while(list: List[int]) -> List[int]:
+    output: List[int] = []
     if len(list) == 0:
         return output
     i = 1
@@ -44,8 +47,8 @@ def shift_while(list):
     return output
 
 
-def shift_for(list):
-    output = []
+def shift_for(list: List[int]) -> List[int]:
+    output: List[int] = []
     if len(list) == 0:
         return output
     for i in range(1, len(list)):
@@ -54,23 +57,23 @@ def shift_for(list):
     return output
 
 
-def shift_slices(list):
-    output = []
+def shift_slices(list: List[int]) -> List[int]:
+    output: List[int] = []
     if len(list) > 0:
         output.extend(list[1:])
         output.append(list[0])
     return output
 
 
-def shift_inplace_smart(list):
+def shift_inplace_smart(list: List[int]) -> None:
     list.append(list.pop(0))
 
 
-def shift_inplace_stupid(list):
+def shift_inplace_stupid(list: List[int]) -> None:
     # Тут надо явно проверить размер списка чтобы избежать ошибок,
     # потому что дальше мы читаем/пишем элемент по индексу 0 и -1.
     if len(list) < 2:
-        return list
+        raise ValueError
     a = list[0]  # Запоминаем первый элемент до того,
     # как он будет стерт сдвигом остальных элементов
     # на его место в следующем цикле.

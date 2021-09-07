@@ -1,4 +1,5 @@
-# LISTS
+from typing import List
+
 
 # Test whether the lists are equal.
 
@@ -8,7 +9,7 @@
 # Example: [1,2], [1,2,3] -> False
 
 
-def equal(a, b):
+def equal(a: List[int], b: List[int]) -> bool:
     if len(a) != len(b):
         return False
     for i in range(len(a)):
@@ -27,10 +28,10 @@ def equal(a, b):
 # 2. append elements to it while its len < max_size
 
 
-def split(list, max_size):
+def split(list: List[int], max_size: int) -> List[List[int]]:
     output = []
     for i in range(0, len(list), max_size):
-        output.append(list[i : i + max_size])
+        output.append(list[i: i + max_size])
     return output
 
 
@@ -41,15 +42,15 @@ def split(list, max_size):
 # Example 3: [[1],[2],[3],[4,5],[6]] -> [1,2,3,4,5,6]
 
 
-def flat(list_of_lists):
+def flat(list_of_lists: List[List[int]]) -> List[int]:
     output = []
     for l in list_of_lists:
         output.extend(l)
     return output
 
 
-def flat_2(list_of_lists):
-    output = []
+def flat_2(list_of_lists: List[List[int]]) -> List[int]:
+    output: List[int] = []
     for l in list_of_lists:
         # This is very clear, readable and appealing,
         # but potentially is much slower than output.append(l)

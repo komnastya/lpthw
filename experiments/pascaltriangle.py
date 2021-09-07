@@ -1,3 +1,8 @@
+from typing import List
+
+PascalTriangle = List[List[int]]
+
+
 # Computes Pascal's trianle of the given height returns a list of lists.
 # height = 4
 # result = [
@@ -8,8 +13,8 @@
 # ]
 
 
-def pascal_triangle(height):
-    triangle = []
+def pascal_triangle(height: int) -> PascalTriangle:
+    triangle: PascalTriangle = []
     previous_row = [1]
     while len(triangle) < height:
         if len(triangle) == 0:
@@ -33,7 +38,7 @@ def pascal_triangle(height):
 # Example: (4) -> [1,3,3,1]
 
 
-def pascal_triangle_by_index(height):
+def pascal_triangle_by_index(height: int) -> List[int]:
     previous_row = [1]
     while len(previous_row) <= height:
         if height == 0:

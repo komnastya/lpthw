@@ -1,4 +1,7 @@
-def smallerNumbersThanCurrent_slow(nums):
+from typing import List
+
+
+def smallerNumbersThanCurrent_slow(nums: List[int]) -> List[int]:
     output = []
     for a in nums:
         counter = 0
@@ -9,7 +12,7 @@ def smallerNumbersThanCurrent_slow(nums):
     return output
 
 
-def smallerNumbersThanCurrent(nums):
+def smallerNumbersThanCurrent(nums: List[int]) -> List[int]:
     counts = [0 for i in range(101)]
     for num in nums:
         counts[num] += 1

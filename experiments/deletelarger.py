@@ -1,5 +1,6 @@
 from typing import List
 
+
 # Deletes from the given list all elements larger than max.
 # Example: delete_large([1,2,3,4,5,6,7,8,1], 1) -> [1,1]
 # Example: delete_large([1,2,3,4,5,6,7,8,1], 3) -> [1,2,3,1]
@@ -51,7 +52,6 @@ def delete_large_fast(list: List[int], max: int) -> None:
             list[w] = value
             w = w + 1
     del list[w:]
-
 
 # Delete_large_fast function explanation -> -> ->
 

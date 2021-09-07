@@ -1,3 +1,6 @@
+from typing import List
+
+
 # Tests whether the given list starts|ends with the given PREFIX|SUFFIX
 
 # Tests whether the given list starts with the given prefix.
@@ -7,7 +10,9 @@
 # Example: starts_with([1,2,3], [1,2,3]) -> True
 # Example: starts_with([1,2,3], [2]) -> False
 # Example: starts_with([1,2,3], [1,2,3,4]) -> False
-def starts_with(list, prefix):
+
+
+def starts_with(list: List[int], prefix: List[int]) -> bool:
     if len(prefix) > len(list):
         return False
     for i in range(len(prefix)):
@@ -26,7 +31,7 @@ def starts_with(list, prefix):
 # Example: ends_with([1,2,3], [0,1,2,3]) -> False
 
 
-def ends_with(list, suffix):
+def ends_with(list: List[int], suffix: List[int]) -> bool:
     if len(suffix) > len(list):
         return False
     a = len(list) - len(suffix)

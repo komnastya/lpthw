@@ -1,3 +1,6 @@
+from typing import List
+
+
 # - Ensures that the given list is not longer than max_length:
 
 # Example: truncate([], 3) -> []
@@ -6,7 +9,6 @@
 # Example: truncate([1,2,3,4,5,6], 1000) ->
 
 
-# TODO Implement me!
 # Write two implementations:
 # 1. An implementation which returns a new list.
 # 2. An implementation which modifies the given list and does not return anything.
@@ -14,12 +16,12 @@
 # first variant
 
 
-def truncate(list, max_length):
-    output = []
+def truncate(list: List[int], max_length: int) -> List[int]:
+    output: List[int] = []
     if len(list) == 0:
         return output
     # elif len(list) < max_length:
-    # return list # FIXME: неправильно, надо вернуть новый список, а не list
+    # return list
     # i = 0
     # while len(output) < max_length:
     #   output.append(list[i])
@@ -33,12 +35,10 @@ def truncate(list, max_length):
 # second variant
 
 
-def truncate_2(list, max_length):
+def truncate_2(list: List[int], max_length: int) -> None:
     del list[max_length:]
 
 
-def truncate_3(list, max_length):
-    if len(list) == 0:
-        return list
+def truncate_3(list: List[int], max_length: int) -> None:
     while len(list) > max_length:
         list.pop()  # OR del list[-1]

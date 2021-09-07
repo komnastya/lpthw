@@ -1,5 +1,6 @@
 from typing import List
 
+
 # Converts the given list of digits in a  given base.
 # []            -> 0
 # [0]           -> 0

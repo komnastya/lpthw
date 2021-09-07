@@ -1,6 +1,8 @@
+from typing import List
+
+
 # Sorts the given list of elements
 # in the increasing order.
-# TODO Implement me!
 # loops
 # ifs/conditions
 # comparisons of list elements
@@ -9,7 +11,7 @@
 # list[1] = list[2]
 
 
-def is_sorted(list):
+def is_sorted(list: List[int]) -> bool:
     if len(list) == 0:
         return False
     for x in range(len(list) - 1):

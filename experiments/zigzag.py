@@ -1,3 +1,6 @@
+from typing import List
+
+
 # Write function zig_zag as follows
 
 # Returns a list of numbers as follows:
@@ -6,7 +9,7 @@
 # and all odd values are negative.
 
 
-def zig_zag(max):
+def zig_zag(max: int) -> List[int]:
     output = []
     for x in range(max + 1):
         if x % 2:
@@ -22,12 +25,9 @@ def zig_zag(max):
 # [1, -1, 2, -2, 3, -3, ..., max]
 
 
-def zig_zag_2(max):
+def zig_zag_2(max: int) -> List[int]:
     output = []
     for x in range(1, max + 1):
         output.append(x)
         output.append(-x)
     return output
-
-
-print(zig_zag_2(2))

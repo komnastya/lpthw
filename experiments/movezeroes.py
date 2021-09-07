@@ -1,3 +1,6 @@
+from typing import List
+
+
 # Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 
 # Note that you must do this in-place without making a copy of the array.
@@ -8,7 +11,7 @@
 # Example 4: [] -> []
 
 
-def moveZeroes(nums):
+def moveZeroes(nums: List[int]) -> None:
     r = 0
     w = 0
     while r < len(nums):

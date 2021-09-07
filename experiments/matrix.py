@@ -1,8 +1,8 @@
 from typing import List
 
-
 # Type Alias
 Matrix = List[List[int]]
+
 
 # Tests whether the given matrix is square.
 # Example: [] -> True

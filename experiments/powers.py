@@ -1,3 +1,6 @@
+from typing import List
+
+
 # Write a function which returns a list of all powers of two up to the max value (including):
 
 # Returns a list of powers of two up to max (including):
@@ -6,8 +9,8 @@
 # Example 3: 32 -> [1, 2, 4, 8, 16, 32]
 
 
-def powers_of_two(max):
-    output = []
+def powers_of_two(max: int) -> List[int]:
+    output: List[int] = []
     value = 1
     while value <= max:
         output.append(value)
@@ -23,8 +26,8 @@ def powers_of_two(max):
 # Example 3: 32 -> [1, 3, 9, 27, 81, 243, 729]
 
 
-def powers_of_three(max):
-    output = []
+def powers_of_three(max: int) -> List[int]:
+    output: List[int] = []
     for power in range(max):
         value = 3 ** power
         if value <= max:

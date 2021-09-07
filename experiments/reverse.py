@@ -1,3 +1,6 @@
+from typing import List
+
+
 # - Write a function which reverses a list:
 
 # Reverses the given list.
@@ -6,7 +9,9 @@
 # Example: [] -> []
 # Example: [1] -> [1]
 # Example: [1,2,3,4,5] -> [5,4,3,2,1]
-def reverse(list):
+
+
+def reverse(list: List[int]) -> List[int]:
     i = 0
     j = len(list) - 1
     while i < j:
