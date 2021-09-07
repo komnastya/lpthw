@@ -7,13 +7,13 @@
 # Example: [1] -> [1]
 # Example: [1,2,3,4,5] -> [5,4,3,2,1]
 def reverse(list):
-  i = 0
-  j = len(list) - 1
-  while i < j:
-    a = list[i]
-    b = list[j]
-    list[i] = b
-    list[j] = a
-    i = i + 1
-    j = j - 1
-  return list
+    i = 0
+    j = len(list) - 1
+    while i < j:
+        a = list[i]
+        b = list[j]
+        list[i] = b
+        list[j] = a
+        i = i + 1
+        j = j - 1
+    return list

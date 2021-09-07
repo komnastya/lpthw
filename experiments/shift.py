@@ -22,6 +22,7 @@
 # Example: [1,2,3] -> [2,3,1]
 # Example: [1,2,3,4,5,6,7,8,9] -> [2,3,4,5,6,7,8,9,1]
 
+
 def shift_reverse(list):
     output = []
     if len(list) == 0:
@@ -29,6 +30,7 @@ def shift_reverse(list):
     for i in range(len(list)):
         output.append(list[i - 1])
     return output
+
 
 def shift_while(list):
     output = []
@@ -51,6 +53,7 @@ def shift_for(list):
     output.append(list[0])
     return output
 
+
 def shift_slices(list):
     output = []
     if len(list) > 0:
@@ -58,8 +61,10 @@ def shift_slices(list):
         output.append(list[0])
     return output
 
+
 def shift_inplace_smart(list):
     list.append(list.pop(0))
+
 
 def shift_inplace_stupid(list):
     # Тут надо явно проверить размер списка чтобы избежать ошибок,

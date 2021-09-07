@@ -22,11 +22,11 @@ def fizz_buzz(max: int) -> FizzBuzzList:
     output: FizzBuzzList = []
     for x in range(1, max + 1):
         if x % 15 == 0:
-            output.append((x, 'fizz_buzz'))
+            output.append((x, "fizz_buzz"))
         elif x % 3 == 0:
-            output.append((x,'fizz'))
+            output.append((x, "fizz"))
         elif x % 5 == 0:
-            output.append((x,'buzz'))
+            output.append((x, "buzz"))
         else:
             output.append(x)
     return output
@@ -39,15 +39,15 @@ def fizz_buzz_2(max: int) -> FizzBuzzList:
     c = 15
     for x in range(1, max + 1):
         if x == c:
-            output.append((x, 'fizz_buzz'))
+            output.append((x, "fizz_buzz"))
             a += 3
             b += 5
             c += 15
         elif x == a:
-            output.append((x,'fizz'))
+            output.append((x, "fizz"))
             a += 3
         elif x == b:
-            output.append((x,'buzz'))
+            output.append((x, "buzz"))
             b += 5
         else:
             output.append(x)

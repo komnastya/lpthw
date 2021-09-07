@@ -53,6 +53,7 @@ def decompress(list: CompressedSeq) -> List:
 # Example 6: [(1, 3), (2, 3)], 5 -> 2
 # Example 7: [(1, 3), (2, 3)], 4 -> None
 
+
 def element_by_index(list: CompressedSeq, index: int) -> Optional[Any]:
     sum = 0
     for value, count in list:
@@ -93,7 +94,8 @@ def element_by_index(list: CompressedSeq, index: int) -> Optional[Any]:
 # 3.  if index < sum then return value
 
 
-def element_by_index_buggy(list: CompressedSeq, index: int):  # TODO this function doesn't return None if index is out of range
+def element_by_index_buggy(list: CompressedSeq, index: int):
+    # TODO this function doesn't return None if index is out of range
     i = 0
     count = list[i][1] - 1
     while i < len(list) - 1:

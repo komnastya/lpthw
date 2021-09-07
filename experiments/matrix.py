@@ -12,22 +12,23 @@ Matrix = List[List[int]]
 
 
 def is_square(matrix: Matrix) -> bool:
-  for row in matrix:
-    if len(row) != len (matrix):
-      return False
-  return True
+    for row in matrix:
+        if len(row) != len(matrix):
+            return False
+    return True
 
 
-#Matrix addition
+# Matrix addition
+
 
 def matrix_sum(a: Matrix, b: Matrix) -> Matrix:
-  if len(a) != len(b):
-    raise ValueError
-  rows = []
-  for i in range(len(a)):
-    columns = []
-    for j in range(len(a[i])):
-      x = a[i][j] + b[i][j]
-      columns.append(x)
-    rows.append(columns)
-  return rows
+    if len(a) != len(b):
+        raise ValueError
+    rows = []
+    for i in range(len(a)):
+        columns = []
+        for j in range(len(a[i])):
+            x = a[i][j] + b[i][j]
+            columns.append(x)
+        rows.append(columns)
+    return rows

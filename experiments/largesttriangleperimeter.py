@@ -12,10 +12,10 @@ from typing import List
 
 
 def largestPerimeter(nums: List[int]) -> int:
-        nums.sort(reverse=True)
-        largest_perimeter: int = 0
-        for i in range(len(nums)-2):
-            if nums[i] < nums[i + 1] + nums[i + 2]:
-                largest_perimeter = nums[i] + nums[i + 1] + nums[i + 2]
-                return largest_perimeter
-        return largest_perimeter
+    nums.sort(reverse=True)
+    largest_perimeter: int = 0
+    for i in range(len(nums) - 2):
+        if nums[i] < nums[i + 1] + nums[i + 2]:
+            largest_perimeter = nums[i] + nums[i + 1] + nums[i + 2]
+            return largest_perimeter
+    return largest_perimeter

@@ -10,7 +10,7 @@ def delete_repeated(list: List[int]) -> None:
     i = 0
     while i < len(list) - 1:
         if list[i] == list[i + 1]:
-            list[i:i + 1] = []
+            list[i : i + 1] = []
         else:
             i = i + 1
 

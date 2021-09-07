@@ -13,7 +13,7 @@ from typing import Any, List
 
 
 def find(list: List[Any], element: Any) -> int:
-  for i in range (len(list)):
-    if list[i] == element:
-      return i
-  return -1
+    for i in range(len(list)):
+        if list[i] == element:
+            return i
+    return -1

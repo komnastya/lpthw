@@ -19,6 +19,7 @@ def delete_large(list: List[int], max: int) -> List:
 
 # This function change the list, and returns modified list, but does it slowly
 
+
 def delete_large_slow(list: List[int], max: int) -> None:
     i = 0
     while i < len(list):
@@ -29,6 +30,7 @@ def delete_large_slow(list: List[int], max: int) -> None:
 
 
 # reverse example
+
 
 def delete_small(list: List[int], min: int) -> None:
     i = 0
@@ -49,6 +51,7 @@ def delete_large_fast(list: List[int], max: int) -> None:
             list[w] = value
             w = w + 1
     del list[w:]
+
 
 # Delete_large_fast function explanation -> -> ->
 

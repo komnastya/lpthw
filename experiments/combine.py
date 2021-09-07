@@ -7,7 +7,7 @@ from typing import List, Tuple, Optional
 # Both lists a and b are assumed to be of equal size.
 # Example: combine([1], [4]) -> [1,4]
 # Example: combine([1,2,3], [4,5,6]) -> [1,4,2,5,3,6]
-def combine(a: List[int], b: List[int]) -> Optional[List[Tuple[int, int]]]:  # it likes in-build zip()
+def combine(a: List[int], b: List[int]) -> Optional[List[Tuple[int, int]]]:
     if len(a) != len(b):
         return None  # TODO raise ValueError
     output: List[Tuple[int, int]] = []
@@ -18,7 +18,7 @@ def combine(a: List[int], b: List[int]) -> Optional[List[Tuple[int, int]]]:  # i
 
 def my_combine(a: List[int], b: List[int]) -> Optional[List[int]]:
     if len(a) != len(b):
-        return None # TODO raise ValueError
+        return None  # TODO raise ValueError
     output: List[int] = []
     for i, j in zip(a, b):  # or for i, j in combine(a,b)
         output.append(i)
