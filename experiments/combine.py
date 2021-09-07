@@ -8,6 +8,8 @@
 # Example: combine([1,2,3], [4,5,6]) -> [1,4,2,5,3,6]
 
 def combine(a, b):#it likes in-build zip()
+  if len(a) != len(b):
+    return False
   output = []
   for i in range (len(a)):
     output.append((a[i], b[i]))
