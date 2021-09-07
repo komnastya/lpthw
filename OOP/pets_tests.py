@@ -106,6 +106,5 @@ class TestPets(unittest.TestCase):
         self.assertIs(pet.owner, owner)
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

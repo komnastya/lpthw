@@ -17,15 +17,18 @@ class Board:
         cell = self._board[v][h]
         if cell != " ":
             raise InvalidMoveError(
-                f"Cell ({v+1}, {h+1}) is already occupied with {cell}.")
+                f"Cell ({v+1}, {h+1}) is already occupied with {cell}."
+            )
         player = self.get_current_player()
         self._moves.append((v, h))
         board = self._board
         board[v][h] = player
-        if (board[v][0] == board[v][1] == board[v][2] != " "
-                or board[0][h] == board[1][h] == board[2][h] != " "
-                or board[0][0] == board[1][1] == board[2][2] != " "
-                or board[2][0] == board[1][1] == board[0][2] != " "):
+        if (
+            board[v][0] == board[v][1] == board[v][2] != " "
+            or board[0][h] == board[1][h] == board[2][h] != " "
+            or board[0][0] == board[1][1] == board[2][2] != " "
+            or board[2][0] == board[1][1] == board[0][2] != " "
+        ):
             self._winner = player
 
     def is_game_over(self):
@@ -53,8 +56,8 @@ def get_computer_move(board):
     while True:
         v = random.randint(0, 2)
         h = random.randint(0, 2)
-        if board._board[v][h] == ' ':
-            print(f'\nComputer move is: {v + 1} {h + 1}')
+        if board._board[v][h] == " ":
+            print(f"\nComputer move is: {v + 1} {h + 1}")
             return v, h
 
 
@@ -74,7 +77,7 @@ def get_human_move(board):
 
 
 def get_move(board):
-    if board.get_current_player() == 'X':
+    if board.get_current_player() == "X":
         return get_human_move(board)
     else:
         return get_computer_move(board)

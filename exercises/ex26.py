@@ -1,14 +1,15 @@
-#ex26
-print("How old are you?", end=' ')
+# ex26
+print("How old are you?", end=" ")
 age = input()
-print("How tall are you?", end=' ')
+print("How tall are you?", end=" ")
 height = input()
-print("How much do you weigh?", end=' ')
+print("How much do you weigh?", end=" ")
 weight = input()
 
 print(f"So, you're {age} old, {height} tall and {weight} heavy.")
 
 from sys import argv
+
 script, filename = argv
 
 txt = open(filename)
@@ -24,9 +25,11 @@ txt_again = open(file_again)
 print(txt_again.read())
 
 
-print('\nLet\'s practice everything.')
-print("""You\'d need to know \'bout escapes
-      with \\ that do \n newlines and \t tabs.""")
+print("\nLet's practice everything.")
+print(
+    """You\'d need to know \'bout escapes
+      with \\ that do \n newlines and \t tabs."""
+)
 
 poem = """
 \tThe lovely world
@@ -44,6 +47,7 @@ print("--------------")
 
 five = 10 - 2 + 3 - 6
 print(f"This should be five: {five}")
+
 
 def secret_formula(started):
     jelly_beans = started * 500
@@ -68,14 +72,13 @@ formula = secret_formula(startpoint)
 print("We'd have {} beans, {} jars, and {} crates.".format(*formula))
 
 
-
 people = 20
 cats = 30
 dogs = 15
 
 
 if people < cats:
-    print ("Too many cats! The world is doomed!")
+    print("Too many cats! The world is doomed!")
 
 if people > cats:
     print("Not many cats! The world is saved!")

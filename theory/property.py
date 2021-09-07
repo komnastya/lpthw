@@ -28,34 +28,34 @@ print(human.temperature)
 
 print(human.to_fahrenheit())
 
-#human.temperature = -300
+# human.temperature = -300
 
-#The @property Decorator
-#In Python, property() is a built-in function that creates and returns a property object. The syntax of this function is:
+# The @property Decorator
+# In Python, property() is a built-in function that creates and returns a property object. The syntax of this function is:
 
-#property(fget=None, fset=None, fdel=None, doc=None)
-#where,
+# property(fget=None, fset=None, fdel=None, doc=None)
+# where,
 
-#fget is function to get value of the attribute
-#fset is function to set value of the attribute
-#fdel is function to delete the attribute
-#doc is a string (like a comment)
-#As seen from the implementation, these function arguments are optional. So, a property object can simply be created as follows.
+# fget is function to get value of the attribute
+# fset is function to set value of the attribute
+# fdel is function to delete the attribute
+# doc is a string (like a comment)
+# As seen from the implementation, these function arguments are optional. So, a property object can simply be created as follows.
 
-#>>> property()
-#<property object at 0x0000000003239B38>
-#A property object has three methods, getter(), setter(), and deleter() to specify fget, fset and fdel at a later point. This means, the line:
+# >>> property()
+# <property object at 0x0000000003239B38>
+# A property object has three methods, getter(), setter(), and deleter() to specify fget, fset and fdel at a later point. This means, the line:
 
-#temperature = property(get_temperature,set_temperature)
-#can be broken down as:
+# temperature = property(get_temperature,set_temperature)
+# can be broken down as:
 
 # make empty property
 temperature = property()
 # assign fget
-#temperature = temperature.getter(get_temperature)
+# temperature = temperature.getter(get_temperature)
 # assign fset
-#temperature = temperature.setter(set_temperature)
-#These two pieces of codes are equivalent.
+# temperature = temperature.setter(set_temperature)
+# These two pieces of codes are equivalent.
 
 # Using @property decorator
 class Celsius_2:

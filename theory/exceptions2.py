@@ -1,20 +1,22 @@
-#Theory
+# Theory
 
-#Private method
+# Private method
 
-class ClassName():
-  def fun(self):
-    print ('Public method')
 
-  def __fun (self):
-    print ('Private method')
+class ClassName:
+    def fun(self):
+        print("Public method")
+
+    def __fun(self):
+        print("Private method")
+
 
 a = ClassName()
 a.fun()
-a._ClassName__fun() #call private method
+a._ClassName__fun()  # call private method
 
 
-#Catching and handling exceptions
+# Catching and handling exceptions
 
 try:
     x = int(input("Please enter a number: "))
@@ -33,14 +35,14 @@ finally:
 # x = 0 -> z will be undeclared
 x = 10
 try:
-   y = 100 / x
-   z = 23 * y
+    y = 100 / x
+    z = 23 * y
 except ZeroDivisionError:
-   pass
-print(z) # z will not be printed if an Exception is raised
+    pass
+print(z)  # z will not be printed if an Exception is raised
 
 
-#You might want to re-raise an exception to abort a script. For example, if we can’t determine what kind of error is causing the exception, we might want to re-raise it:
+# You might want to re-raise an exception to abort a script. For example, if we can’t determine what kind of error is causing the exception, we might want to re-raise it:
 
 try:
     x = int(input("Please enter a number: "))
@@ -54,14 +56,17 @@ except Exception:
 
 print()
 
-#It’s also possible to create a custom exception class that inherits from the base Exception class. A custom class might be needed if the developer wishes to integrate a more sophisticated logging system or further inspect an object.
-#The __init__() and __str__() methods are required when defining an Exception class:
+# It’s also possible to create a custom exception class that inherits from the base Exception class. A custom class might be needed if the developer wishes to integrate a more sophisticated logging system or further inspect an object.
+# The __init__() and __str__() methods are required when defining an Exception class:
+
 
 class CustomError(Exception):
     def __init__(self, value):
         self.value = value
+
     def __str__(self):
         return "Error: %s" % self.value
+
 
 try:
     raise CustomError("something went wrong")
@@ -69,16 +74,16 @@ try:
 except CustomError as e:
     print(e)
 
-#Assertions evaluate an expression to true or false. If the expression is false, python will raise an AssertionError exception. Assertions can serve as a powerful developer tool when testing your code.
+# Assertions evaluate an expression to true or false. If the expression is false, python will raise an AssertionError exception. Assertions can serve as a powerful developer tool when testing your code.
 
-#The syntax for assertions is assert Expression[, Arguments]:
+# The syntax for assertions is assert Expression[, Arguments]:
 a = 3
 assert a < 10, "a is more than 10"
-#The code above will throw this error:
-#Traceback (most recent call last):
+# The code above will throw this error:
+# Traceback (most recent call last):
 #  File "file.py", line 2, in <module>
 #    assert a < 10,  "something went wrong"
-#AssertionError: something went wrong
+# AssertionError: something went wrong
 
 
 class MyError(Exception):

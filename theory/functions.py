@@ -1,6 +1,6 @@
-#- Indexes vs elements.
-#- Loops over elements.
-#- Loops over indexes.
+# - Indexes vs elements.
+# - Loops over elements.
+# - Loops over indexes.
 
 # Returns the maximal element from the given list.
 # Example: [1,2,3,4,-1,-2] -> 4
@@ -23,6 +23,7 @@ def max_value_1(list):
         if x > maximal_value:
             maximal_value = x
     return maximal_value
+
 
 # Returns index of the maximal element from the given list.
 # Example: [1,2,3,4,-1,-2] -> 3
@@ -50,15 +51,17 @@ def min_value_1(list):
             minimal = x
     return minimal
 
+
 def min_value_2(list):
     if len(list) == 0:
         return None
     minimal = list[0]
-    for i in range (len(list)):
+    for i in range(len(list)):
         x = list[i]
         if x < minimal:
             minimal = x
     return minimal
+
 
 # Returns index of the minimal element from the given list.
 # Example: [1,2,3,4,-1,-2] -> 5
@@ -180,41 +183,44 @@ def print_odd_while(list):
         i = i + 2
 
 
-print('Maximal value is', max_value_1([1, 2, 3, 4, -1, -2]))
-print('Maximal index is', max_index([1, 2, 3, 4, -1, -2]))
-print('Minimal value is', min_value_1([1, 2, 3, 4, -1, -2]))
-print('Maximal index is', min_index([1, 2, 3, 4, -1, -2]))
-print('Is the list sorted? It is ', is_sorted([1, 2, 3, 4]))
-print('Is the list sorted? It is ', is_sorted([4, 3, 2, 1]))
-print('Is the list sorted? It is ', is_sorted([7, 6, 5, 4, 1]))
-print('Is the list sorted? It is ', is_sorted([7, 5, 3, 5, 7]))
-print('Is the list sorted? It is ', is_sorted([1, 3, 5, 7, 5, 3, 1]))
+print("Maximal value is", max_value_1([1, 2, 3, 4, -1, -2]))
+print("Maximal index is", max_index([1, 2, 3, 4, -1, -2]))
+print("Minimal value is", min_value_1([1, 2, 3, 4, -1, -2]))
+print("Maximal index is", min_index([1, 2, 3, 4, -1, -2]))
+print("Is the list sorted? It is ", is_sorted([1, 2, 3, 4]))
+print("Is the list sorted? It is ", is_sorted([4, 3, 2, 1]))
+print("Is the list sorted? It is ", is_sorted([7, 6, 5, 4, 1]))
+print("Is the list sorted? It is ", is_sorted([7, 5, 3, 5, 7]))
+print("Is the list sorted? It is ", is_sorted([1, 3, 5, 7, 5, 3, 1]))
 
-#To practice with tuples and the enumerate function, write functions max_index, min_index using the enumerate function internally.
+# To practice with tuples and the enumerate function, write functions max_index, min_index using the enumerate function internally.
+
 
 def max_index_2(list):
-  if len(list) == 0:
-    return False
-  maximal = list[0]
-  for index, value in enumerate(list):
-    if value > maximal:
-      maximal = value
-      maximal_index = index
-  return maximal_index
+    if len(list) == 0:
+        return False
+    maximal = list[0]
+    for index, value in enumerate(list):
+        if value > maximal:
+            maximal = value
+            maximal_index = index
+    return maximal_index
+
 
 def min_index_2(list):
-  if len(list) == 0:
-    return False
-  minimal = list [0]
-  for index, value in enumerate(list):
-    if value <  minimal:
-      minimal = value
-      minimal_index = index
-  return minimal_index
+    if len(list) == 0:
+        return False
+    minimal = list[0]
+    for index, value in enumerate(list):
+        if value < minimal:
+            minimal = value
+            minimal_index = index
+    return minimal_index
 
-print (max_index_2([15,3,5,1,12,4,19,7]))
+
+print(max_index_2([15, 3, 5, 1, 12, 4, 19, 7]))
 #                                 ^ max element, index = 6
-print (min_index_2([15,3,5,1,12,4,19,7]))
+print(min_index_2([15, 3, 5, 1, 12, 4, 19, 7]))
 #                          ^ min element, index = 3
-print (min_index_2((15,3,5,1,12,4,19,7))) # This also works!
+print(min_index_2((15, 3, 5, 1, 12, 4, 19, 7)))  # This also works!
 #                          ^ min element, index = 3
