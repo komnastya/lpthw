@@ -5,9 +5,10 @@ from combine import combine, my_combine
 
 class TestCombine(unittest.TestCase):
 
-    def test_exceprion(self):
+    def test_exception(self):
         with self.assertRaises(ValueError):
             my_combine([1], [1, 2])
+        with self.assertRaises(ValueError):
             combine([1], [1, 2])
 
     def test_my_combine(self):
